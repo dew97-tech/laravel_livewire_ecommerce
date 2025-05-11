@@ -1,61 +1,142 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Laravel eCommerce Platform
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A robust and scalable eCommerce platform built with **Laravel**, **Livewire**, and **Filament**. This project provides a modern, feature-rich online store with a dynamic frontend powered by Livewire and an intuitive admin panel managed via Filament. It supports product management, user authentication, cart functionality, and order processing, making it suitable for small to medium-sized businesses.
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **Dynamic Frontend**: Interactive UI with Laravel Livewire for real-time updates without page reloads.
+- **Admin Dashboard**: Filament-powered admin panel for managing products, orders, users, and categories.
+- **Product Management**: Create, update, and delete products with support for images, descriptions, and pricing.
+- **Shopping Cart**: Add/remove items, view cart, and proceed to checkout.
+- **Order Processing**: Track orders with status updates and user notifications.
+- **User Authentication**: Secure registration, login, and role-based access control.
+- **Database Support**: Configurable for SQLite or MySQL databases.
+- **Responsive Design**: Mobile-friendly interface for seamless user experience.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Tech Stack
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Framework**: Laravel 11
+- **Frontend**: Livewire 3, Tailwind CSS
+- **Admin Panel**: FilamentPHP 3
+- **Database**: SQLite (default) or MySQL
+- **Server**: PHP 8.2+, Composer
+- **Environment**: Laragon (recommended for local development)
 
-## Learning Laravel
+## Prerequisites
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Before setting up the project, ensure you have the following installed:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- PHP >= 8.2
+- Composer
+- Node.js and npm
+- SQLite or MySQL (based on your `.env` configuration)
+- Laragon (optional, for local development)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Installation
 
-## Laravel Sponsors
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/your-username/your-repo.git
+   cd your-repo
+   ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+2. **Install Dependencies**
+   ```bash
+   composer install
+   npm install
+   ```
 
-### Premium Partners
+3. **Configure Environment**
+   - Copy the `.env.example` file to `.env`:
+     ```bash
+     cp .env.example .env
+     ```
+   - Update `.env` with your database settings (SQLite or MySQL):
+     ```env
+     DB_CONNECTION=sqlite
+     DB_DATABASE=/absolute/path/to/database.sqlite
+     ```
+     or
+     ```env
+     DB_CONNECTION=mysql
+     DB_HOST=127.0.0.1
+     DB_PORT=3306
+     DB_DATABASE=your_database
+     DB_USERNAME=your_username
+     DB_PASSWORD=your_password
+     ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development/)**
-- **[Active Logic](https://activelogic.com)**
+4. **Generate Application Key**
+   ```bash
+   php artisan key:generate
+   ```
+
+5. **Run Migrations**
+   - Create the database schema:
+     ```bash
+     php artisan migrate
+     ```
+   - Optionally, seed the database with sample data:
+     ```bash
+     php artisan db:seed
+     ```
+
+6. **Compile Assets**
+   ```bash
+   npm run dev
+   ```
+
+7. **Start the Server**
+   - Using Laravel Artisan:
+     ```bash
+     php artisan serve
+     ```
+   - Or use Laragon for a local server setup.
+
+8. **Access the Application**
+   - Frontend: `http://localhost:8000`
+   - Admin Panel: `http://localhost:8000/admin` (requires admin credentials)
+
+## Usage
+
+- **Admin Access**: Register an admin user via the Filament panel or seed the database with an admin account.
+- **Frontend**: Browse products, add to cart, and complete purchases as a guest or registered user.
+- **Customization**: Extend the Livewire components or Filament resources in `app/Filament` to add features.
 
 ## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+We welcome contributions! Please follow these steps:
 
-## Code of Conduct
+1. Fork the repository.
+2. Create a feature branch: `git checkout -b feature/your-feature`.
+3. Commit your changes: `git commit -m "Add your feature"`.
+4. Push to the branch: `git push origin feature/your-feature`.
+5. Open a pull request with a clear description of your changes.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Please adhere to the [Code of Conduct](CODE_OF_CONDUCT.md) and ensure your code follows Laravel coding standards.
 
-## Security Vulnerabilities
+## Testing
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Run the test suite to ensure the application works as expected:
+```bash
+php artisan test
+```
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is licensed under the [MIT License](LICENSE).
+
+## Acknowledgments
+
+- [Laravel](https://laravel.com) for the robust PHP framework.
+- [Livewire](https://livewire.laravel.com) for dynamic frontend components.
+- [FilamentPHP](https://filamentphp.com) for the powerful admin panel.
+- [Laragon](https://laragon.org) for a seamless local development environment.
+
+## Contact
+
+For questions or support, please open an issue or contact [your-email@example.com](mailto:your-email@example.com).
+
+---
+
+Happy selling! 🚀
